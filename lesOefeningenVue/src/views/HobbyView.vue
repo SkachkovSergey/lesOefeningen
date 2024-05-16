@@ -2,8 +2,9 @@
   <div class="container">
     <h1>{{ title }}</h1>
     <ul>
-      <li v-for="hobby in hobbies" :key="hobbies.id">{{ hobby.naam }}</li>
+      <li v-for="(hobby, index) in hobbies" :key="hobby.id" @mouseover="toonClub(index)">{{ index + ' - ' + hobby.naam }}</li>
     </ul>
+    <p>Club: {{ hobbies[hoveredClub].club }}</p>
   </div>
 </template>
 
@@ -20,7 +21,13 @@ export default {
         {id: 5, naam: 'Basketbal', club: 'Club Maaseik VZM', plaats: '3680 Maaseik'},
         {id: 6, naam: 'Volleybal', club: 'Green Yard', plaats: '3500 Hasselt'},
       ],
-      title: 'Mijn hobbies'
+      title: 'Mijn hobbies',
+      hoveredClub: 0,
+    }
+  },
+  methods: {
+    toonClub(index) {
+      this.hoveredClub = index
     }
   }
 }
