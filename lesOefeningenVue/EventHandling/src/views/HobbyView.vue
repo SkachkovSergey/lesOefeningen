@@ -15,9 +15,17 @@
        {{ selectedHobbyIndex.club }} - {{ selectedHobbyIndex.plaats }}</p>
     <img v-if="isZichtbaar" :src="this.selectedHobbyIndex.afbeelding" alt="photo"
          height="100px">
-
+    <table>
+      <tr><td>Id:</td><td><input type="text" v-model="newId" :disabled="true"></td></tr>
+      <tr><td>Naam: </td><td><input type="text" v-model="newName"></td></tr>
+      <tr><td>Club: </td><td><input type="text" v-model="newClub"></td></tr>
+      <tr><td>Plaats: </td><td><input type="text" v-model="newPlace"></td></tr>
+      <tr><td>Afbeelding: </td><td><input type="text" v-model="newAfbeelding"></td></tr>
+      <tr><td> </td><td><button @click="addRecord">Voeg toe</button></td></tr>
+    </table>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -36,6 +44,11 @@ export default {
       hoveredClub: 0,
       selectHobbyIndex: 0,
       zichtbaar: false,
+      newId: 0,
+      newName: "",
+      newClub: "",
+      newPlace: "",
+      newAfbeelding: "",
     }
   },
   methods: {
@@ -45,6 +58,15 @@ export default {
     selectHobby(index) {
       this.selectHobbyIndex = index
       this.zichtbaar = true
+    },
+    addRecord() {
+      this.hobbies.push({
+        id: this.hobbies.length + 1,
+        naam: this.newName,
+        club: this.newClub,
+        plaats: this.newPlace,
+        afbeelding: "../src/assets/" + this.newAfbeelding
+      })
     }
   },
   computed: {
@@ -58,13 +80,16 @@ export default {
 }
 </script>
 
+
 <style scoped>
 @media (min-width: 1024px) {
   .container {
     min-height: 10vh;
     display: flex;
-    align-items: start;
+    align-items: center;
     flex-direction: column;
+    justify-content: center;
+    height: 100vh;
   }
 }
 h3 {
