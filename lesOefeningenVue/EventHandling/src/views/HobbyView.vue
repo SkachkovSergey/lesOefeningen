@@ -67,7 +67,7 @@ export default {
         plaats: this.newPlace,
         afbeelding: "../src/assets/" + this.newAfbeelding
       })
-    }
+    },
   },
   computed: {
     selectedHobbyIndex() {
