@@ -6,7 +6,7 @@
   <span>{{ player.club.toUpperCase() }}</span>
   <label class="check">
     <input type="checkbox" v-model="player.selected"/>
-    {{ player.selected ? 'true': 'false'}}
+    {{ player.selected ? 'selected': 'NOT selected'}}
   </label>
 
 </div>
@@ -21,14 +21,7 @@ export default {
   methods: {
 
   },
-  // computed: {
-  //   player() {
-  //     return '../assets/' + this.players[0].afbeelding +
-  //         this.players[0].speler +
-  //         this.players[0].geboortedatum +
-  //         this.players[0].club.toUpperCase()
-  //   }
-  // }
+
 }
 </script>
 
